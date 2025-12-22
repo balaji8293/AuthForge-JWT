@@ -39,8 +39,12 @@ app.get("/users", async (req, resp) => {
         const [rows] = await db.query("SELECT * FROM users")
         resp.send(rows);
     } catch (error) {
-        resp.status(500).json({ success: false, message: 'error occured' })
-    }
+          console.error("DB ERROR:", error);
+        resp.status(500).json({
+            success: false,
+            message: error.message
+          });
+}
 });
 
 app.post("/register", async (req, resp) => {
@@ -253,3 +257,4 @@ console.log("DB_HOST:", process.env.DB_HOST);
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
 console.log("===================");
 });
+
