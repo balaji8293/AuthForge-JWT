@@ -1,5 +1,12 @@
 const twilio = require("twilio");
-
+  if (
+    !process.env.TWILIO_ACCOUNT_SID ||
+    !process.env.TWILIO_AUTH_TOKEN ||
+    !process.env.TWILIO_PHONE
+  ) {
+    console.warn("⚠️ Twilio env vars missing, SMS skipped");
+    return;
+  }
 const client = new twilio(
   "skldfjsdlkf",  //this is sample due to security reasons
   "lksdjf"  //this is sample due to security reasons
@@ -12,5 +19,6 @@ async function sendOTPSMS(phone, otp,name) {
     to: phone
   });
 }
+
 
 module.exports = sendOTPSMS;
