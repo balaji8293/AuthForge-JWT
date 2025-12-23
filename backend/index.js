@@ -21,7 +21,7 @@ const { default: auth } = require("./middleware/auth");
 app.use(cors({
     origin:[ 
         "http://localhost:3000",
-
+        "https://authforge-m5ao36qcm-balaji8293s-projects.vercel.app",
     ],
     credentials: true
 }))
@@ -257,4 +257,5 @@ console.log("DB_HOST:", process.env.DB_HOST);
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
 console.log("===================");
 });
+
 
